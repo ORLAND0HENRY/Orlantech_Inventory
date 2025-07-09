@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{# Title for the homepage #}
+{% block title %}Welcome - Orlantech Innovations{% endblock %}
+
+{% block content %}
+{# Hero Section - More Compact & Impactful #}
+<header class="bg-dark text-white text-center py-4 shadow-lg rounded-bottom">
+    <div class="container py-4">
+        {# Responsive heading: display-4 on small, display-2 on medium+ #}
+        <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">
+            <i class="bi bi-boxes me-3 d-none d-sm-inline"></i>Your Smart Inventory Hub
+        </h1>
+        <p class="fs-5 mb-4 px-md-5 animate__animated animate__fadeInUp animate__delay-1s">
+            Efficiently manage products, track sales, and gain insights. Streamline your operations with Orlantech Innovations.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center animate__animated animate__fadeInUp animate__delay-2s">
+            {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-lg px-4 me-sm-2 fw-bold" href="{% url 'dashboard' %}">
+                    <i class="bi bi-speedometer2 me-2"></i>Go to Dashboard
+                </a>
+                <a class="btn btn-outline-light btn-lg px-4" href="{% url 'record_sale' %}">
+                    <i class="bi bi-cart-plus me-2"></i>Record Sale
+                </a>
+            {% else %}
+                <a class="btn btn-primary btn-lg px-4 me-sm-2 fw-bold" href="{% url 'login' %}">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Log In
+                </a>
+                <a class="btn btn-success btn-lg px-4" href="{% url 'register' %}">
+                    <i class="bi bi-person-add me-2"></i>Register
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+{# Features Section - Remains well-structured for responsiveness #}
+<section class="container my-5">
+    <h2 class="text-center mb-5 display-5 fw-bold text-secondary animate__animated animate__fadeInUp">
+        Why Choose Us?
+    </h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {# Feature 1: Comprehensive Product Management #}
+        <div class="col animate__animated animate__fadeInLeft">
+            <div class="card h-100 shadow-sm border-0 rounded-3 text-center p-3">
+                <div class="card-body">
+                    <i class="bi bi-archive-fill display-4 text-info mb-3"></i> {# Slightly smaller icon #}
+                    <h5 class="card-title fw-bold text-info mb-2">Product Management</h5> {# Slightly smaller title #}
+                    <p class="card-text text-muted small">
+                        Effortlessly add, update, and track every item in your inventory. Real-time stock levels and easy category management.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {# Feature 2: Intuitive Sales Tracking #}
+        <div class="col animate__animated animate__fadeInUp">
+            <div class="card h-100 shadow-sm border-0 rounded-3 text-center p-3">
+                <div class="card-body">
+                    <i class="bi bi-receipt-cutoff display-4 text-success mb-3"></i>
+                    <h5 class="card-title fw-bold text-success mb-2">Sales Tracking</h5>
+                    <p class="card-text text-muted small">
+                        Record sales quickly and accurately. Monitor transactions, review history, and generate reports.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {# Feature 3: Powerful Analytics Dashboard #}
+        <div class="col animate__animated animate__fadeInRight">
+            <div class="card h-100 shadow-sm border-0 rounded-3 text-center p-3">
+                <div class="card-body">
+                    <i class="bi bi-bar-chart-line-fill display-4 text-warning mb-3"></i>
+                    <h5 class="card-title fw-bold text-warning mb-2">Analytics Dashboard</h5>
+                    <p class="card-text text-muted small">
+                        Gain critical insights into your business. View monthly sales, revenue, and low-stock alerts at a glance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Simple Footer #}
+<footer class="bg-light text-center py-4 mt-5 border-top shadow-sm">
+    <div class="container">
+        <p class="mb-0 text-muted">&copy; {% now "Y" %} Orlantech Innovations. All rights reserved.</p> {# Updated year dynamically #}
+        <p class="mb-0 text-muted small">Powered by Django & Bootstrap</p>
+    </div>
+</footer>
+
+{% endblock %}
